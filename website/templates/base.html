@@ -14,26 +14,125 @@
         href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous"
       />
+      <link rel="stylesheet" href = {{url_for('static', filename='css/style.css') }}
 
       <title>{% block title %}Home{% endblock %}</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbar">
-                <div class="navbar-nav">
-                  {%if user.is_authenticated %}
-                    <a class="nav-item nav-link" id="home" href="/">Home</a>
-                    <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
-                  {% else %}
-                    <a class="nav-item nav-link" id="login" href="/login">Login</a>
-                    <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
-                  {% endif %}
-                </div>
-            </div>
-        </nav>
+      <div class="area"></div>
+      <nav class="main-menu">
+        {%if user.is_authenticated %}
+          <ul>
+              <li>
+                  <a href="/" id="home">
+                      <i class="fa fa-home fa-2x"></i>
+                      <span class="nav-text">
+                          Home
+                      </span>
+                  </a>
+                
+              </li>
+              <li class="has-subnav">
+                  <a href="#">
+                      <i class="fa fa-laptop fa-2x"></i>
+                      <span class="nav-text">
+                          Stars Components
+                      </span>
+                  </a>
+                  
+              </li>
+              <li class="has-subnav">
+                  <a href="#">
+                      <i class="fa fa-list fa-2x"></i>
+                      <span class="nav-text">
+                          Forms
+                      </span>
+                  </a>
+                  
+              </li>
+              <li class="has-subnav">
+                  <a href="#">
+                      <i class="fa fa-folder-open fa-2x"></i>
+                      <span class="nav-text">
+                          Pages
+                      </span>
+                  </a>
+                  
+              </li>
+              <li>
+                  <a href="#">
+                      <i class="fa fa-bar-chart-o fa-2x"></i>
+                      <span class="nav-text">
+                          Graphs and Statistics
+                      </span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      <i class="fa fa-font fa-2x"></i>
+                      <span class="nav-text">
+                          Quotes
+                      </span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      <i class="fa fa-table fa-2x"></i>
+                      <span class="nav-text">
+                          Tables
+                      </span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      <i class="fa fa-map-marker fa-2x"></i>
+                      <span class="nav-text">
+                          Maps
+                      </span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#" >
+                      <i class="fa fa-info fa-2x"></i>
+                      <span class="nav-text">
+                          Documentation
+                      </span>
+                  </a>
+              </li>
+          </ul>
+          <ul class="logout">
+              <li>
+                  <a href="/logout" id="logout">
+                        <i class="fa fa-power-off fa-2x"></i>
+                      <span class="nav-text">
+                          Logout
+                      </span>
+                  </a>
+              </li>  
+          </ul>
+        {% else %}
+        <ul>
+            <li>
+                <a href="/login" id="login">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        Login
+                    </span>
+                </a>
+              
+            </li>
+            <li class="has-subnav">
+                <a href="/sign-up">
+                    <i class="fa fa-laptop fa-2x"></i>
+                    <span class="nav-text">
+                        Sign up
+                    </span>
+                </a>
+                
+            </li>
+          </ul>
+        {%endif%}
+          </nav>
         <!-- Show flash messages from backend code -->
         {% with messages = get_flashed_messages(with_categories=true)%}
           {% if messages%}
@@ -77,6 +176,6 @@
     ></script>
         <script
             type = "text/javascript"
-            src = "{{ url_for('static', filename='index.js') }}"></script>
+            src = "{{ url_for('static', filename='js/index.js') }}"></script>
     </body>
 </html>
